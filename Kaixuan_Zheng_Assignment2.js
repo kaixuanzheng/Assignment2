@@ -28,12 +28,17 @@ console.log("\nQuestion 1.2");
 console.log(filterItems(itemsObject));
 
 //1.3 Given the array, implement a function to calculate the total value of the items.
+// const totalValue = (array) => {
+//   let sum = 0;
+//   array.forEach((item) => {
+//     sum += item["quantity"] * item["price"];
+//   });
+//   return sum;
+// };
 const totalValue = (array) => {
-  let sum = 0;
-  array.forEach((item) => {
-    sum += item["quantity"] * item["price"];
-  });
-  return sum;
+  return array.reduce((total, item) => {
+    return total + item["quantity"] * item["price"];
+  }, 0);
 };
 console.log("\nQuestion 1.3");
 console.log(totalValue(itemsObject));
@@ -53,7 +58,11 @@ const expectedReturnString =
   "perhaps the easiest to understand case for reduce is to return the sum of all the elements in an array";
 
 const formattingStr = (str) => {
-  return str.trim().toLowerCase().split(/[ -]+/).join(" ");
+  return str
+    .trim()
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .join(" ");
 };
 console.log("\nQuestion 2");
 console.log(formattingStr(string));
@@ -79,6 +88,7 @@ has uuid and role. With the not existing property, fill with null. Sort accordin
 */
 function mergeArrays(arr1, arr2) {
   const newArr = [];
+  const ans = [];
   arr1.forEach((obj1) => {
     newArr[obj1["uuid"] - 1] = {
       uuid: obj1["uuid"],
@@ -93,7 +103,10 @@ function mergeArrays(arr1, arr2) {
       newArr[obj2["uuid"] - 1]["role"] = obj2["role"];
     }
   });
-  return newArr;
+  newArr.forEach((ele) => {
+    ans.push(ele);
+  });
+  return ans;
 }
 console.log("\nQuestion 3");
 console.log(mergeArrays(first, second));
