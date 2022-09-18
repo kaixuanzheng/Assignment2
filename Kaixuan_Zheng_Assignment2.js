@@ -14,9 +14,8 @@ function doubleValues(arr) {
   });
   return newArr;
 }
-let newArrayValve = doubleValues(itemsObject);
 console.log("Question 1.1");
-console.log(newArrayValve);
+console.log(doubleValues(itemsObject));
 
 //1.2 Given the array, implement a function for generating a new array which contains item quantity > 2 and price > 300 only.
 const filterItems = (arr) => {
