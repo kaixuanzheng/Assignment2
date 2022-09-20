@@ -5,14 +5,24 @@ const itemsObject = [
   { quantity: 5, price: 400 },
 ];
 //1.1 Given the array, implement a function for generating a new array which doubles the quantity and price in each object.
+// function doubleValues(arr) {
+//   const newArr = arr.map((obj) => ({ ...obj }));
+//   newArr.forEach((ele) => {
+//     Object.keys(ele).forEach((key) => {
+//       ele[key] = ele[key] * 2;
+//     });
+//   });
+//   return newArr;
+// }
+// function doubleValues(arr) {
+//   return arr.map(({ quantity, price }) => {
+//     return { quantity: quantity * 2, price: price * 2 };
+//   });
+// }
 function doubleValues(arr) {
-  const newArr = arr.map((obj) => ({ ...obj }));
-  newArr.forEach((ele) => {
-    Object.keys(ele).forEach((key) => {
-      ele[key] = ele[key] * 2;
-    });
+  return arr.map((item) => {
+    return { quantity: item.quantity * 2, price: item.price * 2 };
   });
-  return newArr;
 }
 console.log("Question 1.1");
 console.log(doubleValues(itemsObject));
@@ -27,13 +37,6 @@ console.log("\nQuestion 1.2");
 console.log(filterItems(itemsObject));
 
 //1.3 Given the array, implement a function to calculate the total value of the items.
-// const totalValue = (array) => {
-//   let sum = 0;
-//   array.forEach((item) => {
-//     sum += item["quantity"] * item["price"];
-//   });
-//   return sum;
-// };
 const totalValue = (array) => {
   return array.reduce((total, item) => {
     return total + item["quantity"] * item["price"];
